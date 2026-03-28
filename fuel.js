@@ -165,7 +165,7 @@ async function fetchTrafficStatus(station) {
         const free = data.flowSegmentData.freeFlowSpeed;
       
         // If speed is less than that of free flow, traffic is heavy (likely a queue)
-        station.isBusy = (current < (free));
+        station.isBusy = (current < (free*0.8));
         station.trafficIndex = Math.round((1 - (current / free)) * 100);
       }
     } catch (e) {
